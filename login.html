@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MarketBot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-700 opacity-20"></div>
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="relative z-10 w-full max-w-md mx-4">
+        <div class="glass p-8 rounded-2xl shadow-2xl">
+            <!-- Logo and Title -->
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <i class="fas fa-robot text-blue-500 text-3xl"></i>
+                    <span class="text-2xl font-bold">MarketBot</span>
+                </div>
+                <h1 class="text-3xl font-bold mb-2">Welcome Back</h1>
+                <p class="text-gray-400">Sign in to your account to continue</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="form-input w-full pl-10 pr-3 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition"
+                            placeholder="you@example.com"
+                        >
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required
+                            class="form-input w-full pl-10 pr-10 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition"
+                            placeholder="••••••••"
+                        >
+                        <button 
+                            type="button" 
+                            onclick="togglePassword()"
+                            class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        >
+                            <i id="passwordToggle" class="fas fa-eye text-gray-400 hover:text-gray-300"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500">
+                        <span class="ml-2 text-sm text-gray-400">Remember me</span>
+                    </label>
+                    <a href="recovery.html" class="text-sm text-blue-400 hover:text-blue-300 transition">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <button 
+                    type="button" 
+                    id="loginBtn"
+                    onclick="login()"
+                    data-original-text="Sign In"
+                    class="btn-primary w-full py-3 px-4 rounded-lg font-semibold text-white transition"
+                >
+                    Sign In
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-700"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-gray-900 text-gray-400">Or continue with</span>
+                </div>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="grid grid-cols-2 gap-3">
+                <button class="flex items-center justify-center px-4 py-2 border border-gray-700 rounded-lg hover:bg-gray-800 transition">
+                    <i class="fab fa-google text-red-500 mr-2"></i>
+                    <span>Google</span>
+                </button>
+                <button class="flex items-center justify-center px-4 py-2 border border-gray-700 rounded-lg hover:bg-gray-800 transition">
+                    <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                    <span>Facebook</span>
+                </button>
+            </div>
+
+            <!-- Sign Up Link -->
+            <div class="text-center mt-6">
+                <p class="text-gray-400">
+                    Don't have an account? 
+                    <a href="signup.html" class="text-blue-400 hover:text-blue-300 font-semibold transition">
+                        Sign up
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="text-center mt-6">
+            <a href="index.html" class="text-gray-400 hover:text-white transition">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.getElementById('passwordToggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.classList.remove('fa-eye');
+                passwordToggle.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.classList.remove('fa-eye-slash');
+                passwordToggle.classList.add('fa-eye');
+            }
+        }
+
+        // Handle Enter key in form
+        document.getElementById('loginForm').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                login();
+            }
+        });
+    </script>
+</body>
+</html>
